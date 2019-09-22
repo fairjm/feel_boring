@@ -4,8 +4,7 @@ use std::io::*;
 use std::thread;
 use std::process;
 
-/// TODO: too large array cause stackoverflow
-const BLOCK_SIZE:u64 = 1024;
+const BLOCK_SIZE:u64 = 102400;
 
 fn main() {
     copy("foo.txt", "foo2.txt", 2).unwrap();
@@ -25,7 +24,7 @@ fn copy(source: &str, dest: &str, thread_num: u64) -> Result<()> {
         println!("{}", i);
         let mut s_file = OpenOptions::new().read(true).open(source)?;
         let mut dest_file = OpenOptions::new().write(true).open(dest)?;
-        let mut buf = [0 as u8; BLOCK_SIZE as usize];
+        let mut buf = vec![0 as u8; BLOCK_SIZE as usize];
         let h = thread::spawn(move || {
             let mut index = i * BLOCK_SIZE;
             loop {
