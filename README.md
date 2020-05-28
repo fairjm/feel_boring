@@ -8,3 +8,5 @@ some rust practise
 - hello : TODO. from https://doc.rust-lang.org/book/ch20-00-final-project-a-web-server.html.
 
 - edge_level_test : used for studying Edge-triggered and level-triggered using MIO.
+
+- simple http proxy : a very basic http proxy implementation using tokio.
